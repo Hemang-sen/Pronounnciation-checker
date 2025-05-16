@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Pronunciation Checker</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <h1>🗣️ Pronunciation Checker</h1>
+    <form action="/analyze" method="post" enctype="multipart/form-data">
+        <label for="reference">Reference Sentence:</label>
+        <input type="text" name="reference" id="reference" placeholder="The quick brown fox jumps over the lazy dog" required>
+        <br><br>
+        <label for="audio">Upload Audio (.wav):</label>
+        <input type="file" name="audio" accept=".wav" required>
+        <br><br>
+        <button type="submit">Analyze</button>
+    </form>
+
+    {% if result %}
+    <hr>
+    <h2>Results</h2>
+    <p><strong>Transcription:</strong> {{ result.transcription }}</p>
+    <p><strong>Reference Phonemes:</strong> {{ result.ref_phonemes }}</p>
+    <p><strong>Spoken Phonemes:</strong> {{ result.spoken_phonemes }}</p>
+    <p><strong>Comparison:</strong><br><pre>{{ result.comparison }}</pre></p>
+    <p><strong>Accuracy:</strong> {{ result.accuracy }}%</p>
+    {% endif %}
+</body>
+</html>

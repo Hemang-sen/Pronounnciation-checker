@@ -1,0 +1,8 @@
+flask
+torchaudio
+transformers
+phonemizer
+librosa
+jiwer
+matplotlib
+torch
